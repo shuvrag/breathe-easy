@@ -31,7 +31,7 @@ from datetime import timedelta
 #    "Select an app", fnames, format_func=format_func
 #)
 
-st.title('Run-Air PM\u2082\u2085 Forecast')
+st.title('Breathe-Easy PM\u2082\u2085 Forecast')
 
 input_city = st.selectbox("What city are you in?", ["Kolkata"])
 #st.write(input_city)
@@ -53,6 +53,8 @@ with open(pkl_filename, 'rb') as file:
 
 input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
+
+#st.write(df.loc[input_datetime].Month_Nov)
 
 #df.index = pd.to_datetime(df.index)
 
