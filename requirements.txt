@@ -1,0 +1,8 @@
+# Add all packages
+# numpy==version number
+streamlit
+pandas
+numpy
+datetime
+display
+
