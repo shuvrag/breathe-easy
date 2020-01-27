@@ -42,19 +42,19 @@ input_city = st.selectbox("What city are you in?", ["Kolkata"])
 input_date = st.text_input('What is the date and time you are thinking of running?', '2019-11-21 07:00:00')
 #st.write(input_date)
 
-path = '../pm_2.5_forecast/data/combined_data_1hr_lags.csv'
+path = 'data/combined_data_1hr_lags.csv'
 df = pd.read_csv(path)
 
 #st.write(df.head())
 
-pkl_filename = '../pm_2.5_forecast/finalised_model.sav'
+pkl_filename = 'finalised_model.sav'
 with open(pkl_filename, 'rb') as file:
     pickle_model = pickle.load(file)
 
 input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
 
-df.index = pd.to_datetime(df.index)
+#df.index = pd.to_datetime(df.index)
 
 #st.write(type(df.index))
 #st.write(df.loc[input_datetime])
@@ -83,8 +83,4 @@ st.write('The particulate matter and weather forecast in ',input_city,' for the 
 for i in range(6):
     st.write("Time: ",input_datetime + timedelta(hours=i), "Particulate Matter Forecast:")
 
-
-
 #st.write('The actual particulate matter and weather forecast in ',input_city,' for the next 6 hours is as follows:')
-
-
