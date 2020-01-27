@@ -54,7 +54,7 @@ with open(pkl_filename, 'rb') as file:
 input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
 
-df.index = pd.to_datetime(df.index)
+#df.index = pd.to_datetime(df.index)
 
 #st.write(type(df.index))
 #st.write(df.loc[input_datetime])
