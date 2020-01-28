@@ -54,7 +54,7 @@ with open(pkl_filename, 'rb') as file:
 input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
 
-#st.write(df.loc[input_datetime].Month_Nov)
+st.write(df.loc[input_datetime].Month_Nov)
 
 #df.index = pd.to_datetime(df.index)
 

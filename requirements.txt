@@ -6,3 +6,5 @@ numpy
 datetime
 display
 matplotlib
+sklearn
+
