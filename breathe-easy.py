@@ -2,6 +2,16 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+from scipy.stats import beta
+import matplotlib.pyplot as plt
+import hvplot.pandas  # noqa: F401
+import holoviews as hv
+
+hv.extension("bokeh")
+
+st.header("Beta Distribution Tutorial")
+
+
 from datetime import datetime
 from string import ascii_letters
 
@@ -49,6 +59,20 @@ input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
 
 st.write('The particulate matter and weather forecast in ',input_city,' for the next 48 hours is as follows:')
+
+st.sidebar.markdown(
+    """
+# Control Panel
+"""
+)
+alpha_slider = st.sidebar.slider(
+    "Value of alpha parameter",
+    min_value=0.1,
+    max_value=100.0,
+    step=1.0,
+    value=2.0,
+)
+
 
 pkl_filename = 'finalised_model.sav'
 with open(pkl_filename, 'rb') as file:
