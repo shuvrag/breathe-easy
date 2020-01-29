@@ -7,4 +7,5 @@ datetime
 display
 matplotlib
 sklearn
+seaborn
 
