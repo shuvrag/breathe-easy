@@ -55,9 +55,9 @@ with open(pkl_filename, 'rb') as file:
     loaded_model = pickle.load(file)
 #prediction = pickle_model.predict
 
-input = np.delete(df.loc[input_datetime].values, [40,50,60,70,80,90])
-output=loaded_model.predict([input])
-st.write(output[0])
+#input = np.delete(df.loc[input_datetime].values, [40,50,60,70,80,90])
+#output=loaded_model.predict([input])
+#st.write(output[0])
 
 for i in range(48):
     st.write("Time: ",input_datetime + timedelta(hours=i), "Particulate Matter Forecast:",df.loc[input_datetime + timedelta(hours=i)].values[0])
