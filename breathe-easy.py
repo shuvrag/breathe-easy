@@ -1,16 +1,13 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.graph_objects as go
+
 
 from scipy.stats import beta
 import matplotlib.pyplot as plt
-import hvplot.pandas  # noqa: F401
-import holoviews as hv
 
-hv.extension("bokeh")
-
-st.header("Beta Distribution Tutorial")
-
+#st.header("Beta Distribution Tutorial")
 
 from datetime import datetime
 from string import ascii_letters
@@ -28,72 +25,175 @@ import calendar
 from datetime import timedelta
 import seaborn as sns
 
-# Not used below
-from scipy import stats
-from scipy.stats import gaussian_kde
-from sklearn import preprocessing
-from sklearn.model_selection import KFold
-from sklearn.linear_model import LinearRegression
-
-#fname_to_run = st.sidebar.selectbox(
-#    "Select an app", fnames, format_func=format_func
-#)
-
-path = 'data/combined_data_1hr_lags.csv'
-df = pd.read_csv(path)
-
-df.rename(columns = {"Unnamed: 0": "Date"}, inplace = True)
-df = df.set_index('Date (LT)')
-df.index = pd.to_datetime(df.index)
-df.dropna(inplace = True)
-df = pd.get_dummies(df, columns = ['Month', 'Hour', 'Day'], drop_first = True)
-
 st.title('Breathe-Easy PM\u2082\u22C5\u2085 Forecast')
 
-#input_city = st.sidebar.selectbox("What city are you in?", ["Kolkata"])
 input_city = st.selectbox("What city are you in?", ["Kolkata"])
 
-input_date = st.text_input('What is the date and time you are thinking of running?', '2019-11-21 07:00:00')
+st.write('The particulate matter and weather forecast in Kolkata for the next 12 hours is as follows:')
 
-input_datetime = pd.to_datetime(input_date)
-st.write(input_datetime)
+fig = go.Figure()
 
-st.write('The particulate matter and weather forecast in ',input_city,' for the next 48 hours is as follows:')
+fig = go.Figure()
 
-st.sidebar.markdown(
-    """
-# Control Panel
-"""
+# Add scatter trace for line
+fig.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[77, 81, 82, 82, 84, 82, 82, 79, 73, 75, 72, 72, 72],
+    mode="lines",
+    name="temperature"
+))
+
+
+fig.update_layout(
+    title="Temperature for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Temperature (in F)",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
 )
-alpha_slider = st.sidebar.slider(
-    "Value of alpha parameter",
-    min_value=0.1,
-    max_value=100.0,
-    step=1.0,
-    value=2.0,
+
+st.write(fig)
+#fig.show()
+
+fig = go.Figure()
+
+# Add scatter trace for line
+fig.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[57, 51, 48, 45, 42, 42, 39, 44, 50, 57, 57, 60, 60],
+    mode="lines",
+    name="humidity"
+))
+
+fig.update_layout(
+    title="Humidity for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Humidity %",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
 )
 
+st.write(fig)
+#fig.show()
 
-pkl_filename = 'finalised_model.sav'
-with open(pkl_filename, 'rb') as file:
-    loaded_model = pickle.load(file)
-#prediction = pickle_model.predict
+# Add scatter trace for line
+fig.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[167, 191, 229, 249, 172, 171, 174, 105, 86, 67, 53, 56, 63],
+    mode="lines",
+    name="pollutant concentration",
+    hovertext=["Temp 77, Hmdty 57, PM2.5 167", "Temp 77, Hmdty 57, PM2.5 191", "Temp 77, Hmdty 57, PM2.5 229",
+               "Temp 77, Hmdty 57, PM2.5 249", "Temp 77, Hmdty 57, PM2.5 172", "Temp 77, Hmdty 57, PM2.5 171",
+               "Temp 77, Hmdty 57, PM2.5 174", "Temp 77, Hmdty 57, PM2.5 105", "Temp 77, Hmdty 57, PM2.5 86",
+               "Temp 77, Hmdty 57, PM2.5 67", "Temp 77, Hmdty 57, PM2.5 53", "Temp 77, Hmdty 57, PM2.5 56",
+               "Temp 77, Hmdty 57, PM2.5 63"],
+    hoverinfo="text",
+    marker=dict(
+        color="green"
+    ),
+    showlegend=False
+))
 
-#input = np.delete(df.loc[input_datetime].values, [40,50,60,70,80,90])
-#output=loaded_model.predict([input])
-#st.write(output[0])
+fig.update_layout(
+    title="Pollution for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Conc. of PM 2.5 in micrograms/m^3",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    ),
+    shapes=[
+        # 1st highlight during Feb 4 - Feb 6
+        go.layout.Shape(
+            type="rect",
+            # x-reference is assigned to the x-values
+            xref="paper",
+            # y-reference is assigned to the plot paper [0,1]
+            yref="y",
+            x0=0,
+            y0=0,
+            x1=1,
+            y1=50,
+            fillcolor="Green",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        ),
+        # 2nd highlight during Feb 20 - Feb 23
+        go.layout.Shape(
+            type="rect",
+            xref="paper",
+            yref="y",
+            x0=0,
+            y0=50,
+            x1=1,
+            y1=100,
+            fillcolor="Yellow",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        ),
+        go.layout.Shape(
+            type="rect",
+            xref="paper",
+            yref="y",
+            x0=0,
+            y0=100,
+            x1=1,
+            y1=150,
+            fillcolor="Orange",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        ),
+        go.layout.Shape(
+            type="rect",
+            xref="paper",
+            yref="y",
+            x0=0,
+            y0=150,
+            x1=1,
+            y1=200,
+            fillcolor="Red",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        ),
+        go.layout.Shape(
+            type="rect",
+            xref="paper",
+            yref="y",
+            x0=0,
+            y0=201,
+            x1=1,
+            y1=300,
+            fillcolor="Purple",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        ),
+        go.layout.Shape(
+            type="rect",
+            xref="paper",
+            yref="y",
+            x0=0,
+            y0=300,
+            x1=1,
+            y1=500,
+            fillcolor="Purple",
+            opacity=0.5,
+            layer="below",
+            line_width=0,
+        )
+    ]
+)
 
-for i in range(48):
-    st.write("Time: ",input_datetime + timedelta(hours=i), "Particulate Matter Forecast:",df.loc[input_datetime + timedelta(hours=i)].values[0])
-
-#index = df.index.get_loc(input_datetime, method='nearest')
-
-#pkl_filename = 'finalised_model.sav'
-#with open(pkl_filename, 'rb') as file:
-#    pickle_model = pickle.load(file)
-#prediction = pickle_model.predict
-
-#st.write(df.loc[input_datetime])
-#st.write(df.loc[input_datetime].Month_Nov)
-#st.write(df.loc[input_datetime].values)
-#st.write(df.loc[input_datetime].values[0])
+st.write(fig)
+#fig.show()
