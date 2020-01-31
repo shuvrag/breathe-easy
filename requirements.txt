@@ -3,11 +3,4 @@
 streamlit
 pandas
 numpy
-datetime
-display
-matplotlib
-sklearn
-seaborn
-pickle
-calendar
 plotly
