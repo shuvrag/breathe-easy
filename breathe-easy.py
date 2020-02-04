@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 
 st.title('Breathe-Easy PM\u2082\u22C5\u2085 Forecast')
 
-input_city = st.selectbox("What city are you in?", ["Kolkata"])
+#input_city = st.selectbox("What city are you in?", ["Kolkata"])
 
 st.write('The particulate matter and weather forecast in Kolkata for the next 12 hours is as follows:')
 
