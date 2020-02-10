@@ -11,59 +11,10 @@ st.title('Breathe-Easy PM\u2082\u22C5\u2085 Forecast')
 
 st.write('The particulate matter and weather forecast in Kolkata for the next 12 hours is as follows:')
 
-fig = go.Figure()
+fig1 = go.Figure()
 
 # Add scatter trace for line
-fig.add_trace(go.Scatter(
-    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    y=[77, 81, 82, 82, 84, 82, 82, 79, 73, 75, 72, 72, 72],
-    mode="lines",
-    name="temperature"
-))
-
-
-fig.update_layout(
-    title="Temperature for the next 12 hours",
-    xaxis_title="Hours from now",
-    yaxis_title="Temperature (in F)",
-    font=dict(
-        family="Courier New, monospace",
-        size=18,
-        color="#7f7f7f"
-    )
-)
-
-st.write(fig)
-#fig.show()
-
-fig = go.Figure()
-
-# Add scatter trace for line
-fig.add_trace(go.Scatter(
-    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    y=[57, 51, 48, 45, 42, 42, 39, 44, 50, 57, 57, 60, 60],
-    mode="lines",
-    name="humidity"
-))
-
-fig.update_layout(
-    title="Humidity for the next 12 hours",
-    xaxis_title="Hours from now",
-    yaxis_title="Humidity %",
-    font=dict(
-        family="Courier New, monospace",
-        size=18,
-        color="#7f7f7f"
-    )
-)
-
-st.write(fig)
-#fig.show()
-
-fig = go.Figure()
-
-# Add scatter trace for line
-fig.add_trace(go.Scatter(
+fig1.add_trace(go.Scatter(
     x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     y=[167, 191, 229, 249, 172, 171, 174, 105, 86, 67, 53, 56, 63],
     mode="lines",
@@ -80,7 +31,7 @@ fig.add_trace(go.Scatter(
     showlegend=False
 ))
 
-fig.update_layout(
+fig1.update_layout(
     title="Pollution for the next 12 hours",
     xaxis_title="Hours from now",
     yaxis_title="Conc. of PM 2.5 in micrograms/m^3",
@@ -173,7 +124,56 @@ fig.update_layout(
             line_width=0,
         )
     ]
+
+st.write(fig1)
+#fig.show()
+
+fig3 = go.Figure()
+
+# Add scatter trace for line
+fig3.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[77, 81, 82, 82, 84, 82, 82, 79, 73, 75, 72, 72, 72],
+    mode="lines",
+    name="temperature"
+))
+
+    fig2 = go.Figure()
+
+# Add scatter trace for line
+fig2.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[57, 51, 48, 45, 42, 42, 39, 44, 50, 57, 57, 60, 60],
+    mode="lines",
+    name="humidity"
+))
+
+fig2.update_layout(
+    title="Humidity for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Humidity %",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
 )
 
-st.write(fig)
+st.write(fig2)
 #fig.show()
+
+
+fig3.update_layout(
+    title="Temperature for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Temperature (in F)",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
+)
+
+st.write(fig3)
+#fig.show()
+)
