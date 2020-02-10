@@ -124,46 +124,22 @@ fig1.update_layout(
             line_width=0,
         )
     ]
+)
 
 st.write(fig1)
 #fig.show()
 
-fig3 = go.Figure()
+fig2 = go.Figure()
 
 # Add scatter trace for line
-fig3.add_trace(go.Scatter(
+fig2.add_trace(go.Scatter(
     x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     y=[77, 81, 82, 82, 84, 82, 82, 79, 73, 75, 72, 72, 72],
     mode="lines",
     name="temperature"
 ))
 
-    fig2 = go.Figure()
-
-# Add scatter trace for line
-fig2.add_trace(go.Scatter(
-    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    y=[57, 51, 48, 45, 42, 42, 39, 44, 50, 57, 57, 60, 60],
-    mode="lines",
-    name="humidity"
-))
-
 fig2.update_layout(
-    title="Humidity for the next 12 hours",
-    xaxis_title="Hours from now",
-    yaxis_title="Humidity %",
-    font=dict(
-        family="Courier New, monospace",
-        size=18,
-        color="#7f7f7f"
-    )
-)
-
-st.write(fig2)
-#fig.show()
-
-
-fig3.update_layout(
     title="Temperature for the next 12 hours",
     xaxis_title="Hours from now",
     yaxis_title="Temperature (in F)",
@@ -174,6 +150,28 @@ fig3.update_layout(
     )
 )
 
+st.write(fig2)
+
+fig3 = go.Figure()
+
+# Add scatter trace for line
+fig3.add_trace(go.Scatter(
+    x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y=[57, 51, 48, 45, 42, 42, 39, 44, 50, 57, 57, 60, 60],
+    mode="lines",
+    name="humidity"
+))
+
+fig3.update_layout(
+    title="Humidity for the next 12 hours",
+    xaxis_title="Hours from now",
+    yaxis_title="Humidity %",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
+)
+
 st.write(fig3)
 #fig.show()
-)
