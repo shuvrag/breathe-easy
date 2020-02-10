@@ -13,8 +13,6 @@ st.write('The particulate matter and weather forecast in Kolkata for the next 12
 
 fig = go.Figure()
 
-fig = go.Figure()
-
 # Add scatter trace for line
 fig.add_trace(go.Scatter(
     x=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -61,6 +59,8 @@ fig.update_layout(
 
 st.write(fig)
 #fig.show()
+
+fig = go.Figure()
 
 # Add scatter trace for line
 fig.add_trace(go.Scatter(
