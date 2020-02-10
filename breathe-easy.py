@@ -44,7 +44,7 @@ fig1.add_trace(go.Scatter(
 ))
 
 fig1.update_layout(
-    title="Pollution for the next 12 hours",
+    title="Pollution for the next 24 hours",
     xaxis_title="Hours from now",
     yaxis_title="Conc. of PM 2.5 in micrograms/m^3",
     font=dict(
@@ -152,7 +152,7 @@ fig2.add_trace(go.Scatter(
 ))
 
 fig2.update_layout(
-    title="Temperature for the next 12 hours",
+    title="Temperature for the next 24 hours",
     xaxis_title="Hours from now",
     yaxis_title="Temperature (in F)",
     font=dict(
@@ -175,7 +175,7 @@ fig3.add_trace(go.Scatter(
 ))
 
 fig3.update_layout(
-    title="Humidity for the next 12 hours",
+    title="Humidity for the next 24 hours",
     xaxis_title="Hours from now",
     yaxis_title="Humidity %",
     font=dict(
