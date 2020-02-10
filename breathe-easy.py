@@ -21,7 +21,7 @@ input_date = st.text_input('What is the date and time you are thinking of going 
 input_datetime = pd.to_datetime(input_date)
 st.write(input_datetime)
 
-st.write('The particulate matter and weather forecast in Kolkata for the next 12 hours is as follows:')
+st.write('The particulate matter and weather forecast in Kolkata for the next 24 hours is as follows:')
 
 fig1 = go.Figure()
 
@@ -31,11 +31,11 @@ fig1.add_trace(go.Scatter(
     y=[167, 191, 229, 249, 172, 171, 174, 105, 86, 67, 53, 56, 63, 61, 88, 139, 124, 98, 93, 111, 134, 97, 111, 101, 130],
     mode="lines",
     name="pollutant concentration",
-    hovertext=["Temp 77, Hmdty 57, PM2.5 167", "Temp 77, Hmdty 57, PM2.5 191", "Temp 77, Hmdty 57, PM2.5 229",
-               "Temp 77, Hmdty 57, PM2.5 249", "Temp 77, Hmdty 57, PM2.5 172", "Temp 77, Hmdty 57, PM2.5 171",
-               "Temp 77, Hmdty 57, PM2.5 174", "Temp 77, Hmdty 57, PM2.5 105", "Temp 77, Hmdty 57, PM2.5 86",
-               "Temp 77, Hmdty 57, PM2.5 67", "Temp 77, Hmdty 57, PM2.5 53", "Temp 77, Hmdty 57, PM2.5 56",
-               "Temp 77, Hmdty 57, PM2.5 63"],
+#    hovertext=["Temp 77, Hmdty 57, PM2.5 167", "Temp 77, Hmdty 57, PM2.5 191", "Temp 77, Hmdty 57, PM2.5 229",
+#               "Temp 77, Hmdty 57, PM2.5 249", "Temp 77, Hmdty 57, PM2.5 172", "Temp 77, Hmdty 57, PM2.5 171",
+#               "Temp 77, Hmdty 57, PM2.5 174", "Temp 77, Hmdty 57, PM2.5 105", "Temp 77, Hmdty 57, PM2.5 86",
+#               "Temp 77, Hmdty 57, PM2.5 67", "Temp 77, Hmdty 57, PM2.5 53", "Temp 77, Hmdty 57, PM2.5 56",
+#               "Temp 77, Hmdty 57, PM2.5 63"],
     hoverinfo="text",
     marker=dict(
         color="green"
