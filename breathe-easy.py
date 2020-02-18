@@ -10,7 +10,7 @@ st.title('Breathe-Easy PM\u2082\u22C5\u2085 Forecast')
 
 #input_city = st.selectbox("What city are you in?", ["Kolkata"])
 
-input_date = st.text_input('What is the date and time you are thinking of going out?', '2020-01-11 15:00:00')
+#input_date = st.text_input('What is the date and time you are thinking of going out?', '2020-01-11 15:00:00')
 
 #in_date = pd.to_datetime(prediction, format = '%j')
 
@@ -18,8 +18,8 @@ input_date = st.text_input('What is the date and time you are thinking of going 
 
 #Userinputday = st.dateinput('Change this date to see a map for a different date:', predictiondate)
 
-input_datetime = pd.to_datetime(input_date)
-st.write(input_datetime)
+#input_datetime = pd.to_datetime(input_date)
+#st.write(input_datetime)
 
 st.write('The particulate matter and weather forecast in Kolkata for the next 24 hours is as follows:')
 
