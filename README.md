@@ -23,7 +23,11 @@ Files
 ----
 
 scraper_0.ipynb -- This is the web-scraper used to collect meteorological data.
+
 analysis_1.ipynb -- This is the file which prepares the raw data as a dataframe for modelling.
+
 analysis_2.ipynb -- This is the file which implements the random forest model.
+
 analysis_3.ipynb -- This is the file which implements the ARIMA time series model.
+
 breathe-easy.py -- This is the file which deploys the model.
